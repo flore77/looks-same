@@ -157,6 +157,7 @@ describe('looksSame', function() {
 });
 
 describe('createDiff', function() {
+
     beforeEach(function() {
         this.tempName = temp.path({suffix: '.png'});
     });
@@ -321,9 +322,11 @@ describe('createDiff', function() {
             reference: srcPath('ref.png'),
             current: srcPath('different.png'),
             diff: this.tempName,
-            highlightColor: '#ff00ff'
+            highlightColor: '#ff00ff',
+            save: false
         }, function(error, buffer) {
             expect(buffer).to.be.an.instanceof(Buffer);
+            done();
         });
     });
 });
