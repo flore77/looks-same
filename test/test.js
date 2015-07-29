@@ -315,4 +315,15 @@ describe('createDiff', function() {
             });
         });
     });
+
+    it('should return a buffer if save option is set to false', function(done) {
+        looksSame.createDiff({
+            reference: srcPath('ref.png'),
+            current: srcPath('different.png'),
+            diff: this.tempName,
+            highlightColor: '#ff00ff'
+        }, function(error, buffer) {
+            expect(buffer).to.be.an.instanceof(Buffer);
+        });
+    });
 });
