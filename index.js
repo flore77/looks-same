@@ -110,7 +110,7 @@ function makeCIEDE2000Comparator(tolerance) {
 
 function areColorsSame(c1, c2) {
     return c1.R === c2.R &&
-        c1.G === c2.G && 
+        c1.G === c2.G &&
         c1.B === c2.B;
 }
 
@@ -188,6 +188,7 @@ function parseColorString(str) {
 
 exports.createDiff = function saveDiff(opts, callback) {
     var tolerance = getToleranceFromOpts(opts);
+    var save = (opts.save === undefined) ? true : false;
 
     readPair(opts.reference, opts.current, function(error, result) {
         if (error) {
@@ -199,7 +200,12 @@ exports.createDiff = function saveDiff(opts, callback) {
             };
 
         buildDiffImage(result.first, result.second, diffOptions, function(result) {
-            result.save(opts.diff, callback);
+            if (save) {
+                result.save(opts.diff, callback);
+            }
+            else {
+                result.createBuffer(callback);
+            }
         });
     });
 };

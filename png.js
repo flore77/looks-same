@@ -97,6 +97,24 @@ PNGOut.prototype = {
         writeStream.on('finish', function() {
             callback(null);
         });
+    },
+
+    createBuffer: function(callback) {
+        this._png.pack();
+        var chunks = [];
+
+        this._png.on('data', function(data) {
+            chunks.push(data);
+        });
+
+        this._png.on('error', function(error) {
+            callback(error, null);
+        });
+
+        this._png.on('end', function() {
+            var buffer = Buffer.concat(chunks);
+            callback(null, buffer);
+        });
     }
 };
 
