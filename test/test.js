@@ -345,10 +345,9 @@ describe('createDiff', function() {
                 highlightColor: '#ff00ff',
                 save: false
             }, function(error, buffer) {
-                fs.readFile(_this.tempName, {encoding: 'base64'},
-                    function(err, data) {
-                        expect(buffer.toString('base64')).to.be.equal(data);
-                        done();
+                fs.readFile(_this.tempName, function(err, data) {
+                    expect(buffer).to.be.deep.equal(data);
+                    done();
                 });
             });
         });
