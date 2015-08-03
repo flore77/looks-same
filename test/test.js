@@ -157,7 +157,6 @@ describe('looksSame', function() {
 });
 
 describe('createDiff', function() {
-
     beforeEach(function() {
         this.tempName = temp.path({suffix: '.png'});
     });
@@ -337,19 +336,13 @@ describe('createDiff', function() {
             current: srcPath('different.png'),
             diff: this.tempName,
             highlightColor: '#ff00ff',
-        }, function(error) {
-            looksSame.createDiff({
-                reference: srcPath('ref.png'),
-                current: srcPath('different.png'),
-                diff: _this.tempName,
-                highlightColor: '#ff00ff',
-                save: false
-            }, function(error, buffer) {
-                fs.readFile(_this.tempName, function(err, data) {
-                    expect(buffer).to.be.deep.equal(data);
+            save: false
+        }, function(error, buffer) {
+            looksSame('./test/data/diffs/small-magenta.png', buffer,
+                function(error, equal) {
+                    expect(equal).to.be.equal(true);
                     done();
                 });
-            });
         });
     });
 });
