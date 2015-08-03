@@ -320,7 +320,6 @@ describe('createDiff', function() {
         looksSame.createDiff({
             reference: srcPath('ref.png'),
             current: srcPath('different.png'),
-            diff: this.tempName,
             highlightColor: '#ff00ff',
             save: false
         }, function(error, buffer) {
@@ -334,7 +333,6 @@ describe('createDiff', function() {
         looksSame.createDiff({
             reference: srcPath('ref.png'),
             current: srcPath('different.png'),
-            diff: this.tempName,
             highlightColor: '#ff00ff',
             save: false
         }, function(error, buffer) {
