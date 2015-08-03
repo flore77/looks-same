@@ -338,7 +338,7 @@ describe('createDiff', function() {
             highlightColor: '#ff00ff',
             save: false
         }, function(error, buffer) {
-            looksSame('./test/data/diffs/small-magenta.png', buffer,
+            looksSame(imagePath('diffs/small-magenta.png'), buffer,
                 function(error, equal) {
                     expect(equal).to.be.equal(true);
                     done();
