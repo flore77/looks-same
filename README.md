@@ -65,3 +65,16 @@ looksSame.createDiff({
 }, function(error) {
 });
 ```
+
+## Returning the diff as a Buffer
+
+If you need to do something further with the diff, you must not write the diff on the disk and then read it, you should only set the `save` option to `false`. Default it is true.
+
+```javascript
+looksSame.createDiff({
+    //exactly same options as above,
+    save: false
+}, function(error, buffer) {
+    ...
+});
+```
