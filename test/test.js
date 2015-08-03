@@ -329,4 +329,28 @@ describe('createDiff', function() {
             done();
         });
     });
+
+    it('should return a buffer equal to the diff on disk', function(done) {
+        var _this = this;
+        looksSame.createDiff({
+            reference: srcPath('ref.png'),
+            current: srcPath('different.png'),
+            diff: this.tempName,
+            highlightColor: '#ff00ff',
+        }, function(error) {
+            looksSame.createDiff({
+                reference: srcPath('ref.png'),
+                current: srcPath('different.png'),
+                diff: _this.tempName,
+                highlightColor: '#ff00ff',
+                save: false
+            }, function(error, buffer) {
+                fs.readFile(_this.tempName, {encoding: 'base64'},
+                    function(err, data) {
+                        expect(buffer.toString('base64')).to.be.equal(data);
+                        done();
+                });
+            });
+        });
+    });
 });
