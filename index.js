@@ -188,7 +188,6 @@ function parseColorString(str) {
 
 exports.createDiff = function saveDiff(opts, callback) {
     var tolerance = getToleranceFromOpts(opts);
-    var save = (opts.save === undefined) ? true : false;
 
     readPair(opts.reference, opts.current, function(error, result) {
         if (error) {
@@ -200,11 +199,11 @@ exports.createDiff = function saveDiff(opts, callback) {
             };
 
         buildDiffImage(result.first, result.second, diffOptions, function(result) {
-            if (save) {
-                result.save(opts.diff, callback);
+            if (opts.save === false) {
+                result.createBuffer(callback);
             }
             else {
-                result.createBuffer(callback);
+                result.save(opts.diff, callback);
             }
         });
     });
