@@ -65,3 +65,19 @@ looksSame.createDiff({
 }, function(error) {
 });
 ```
+
+Both `strict` and `ignoreCaret` can be set independently of one another.
+
+## Building diff image
+
+```javascript
+looksSame.createDiff({
+    reference: '/path/to/reference/image.png',
+    current: '/path/to/reference/image.png',
+    diff: '/path/to/save/diff/to.png',
+    highlightColor: '#ff00ff', //color to highlight the differences
+    strict: false,//strict comparsion
+    tolerance: 2.5
+}, function(error) {
+});
+```
