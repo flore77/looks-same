@@ -66,8 +66,6 @@ looksSame.createDiff({
 });
 ```
 
-Both `strict` and `ignoreCaret` can be set independently of one another.
-
 ## Building diff image as a Buffer
 
 If you need to do something further with the diff, you must not write the diff on disk and then read it, you should only set the `save` option to `false` and a second parameter will be passed to the callback, a raw `buffer`. By default, the diff will be saved on the disk.
