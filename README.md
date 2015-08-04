@@ -68,7 +68,7 @@ looksSame.createDiff({
 
 ## Building diff image as a Buffer
 
-If you don't want the diff image to be written on disk, then you can pass {save: false} to the createDiff method. The callback will then receive a Buffer containing the diff as the 2nd argument. Default is to save the image on disk.
+Proposal: If you don't want the diff image to be written on disk, then you can pass `{save: false}` to the `createDiff` method. The callback will then receive a `Buffer` containing the diff as the 2nd argument. Default is to save the image on disk.
 
 ```javascript
 looksSame.createDiff({
